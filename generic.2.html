@@ -12,9 +12,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <!-- Use echarts.js -->
+    <script src="echarts.min.js"></script>
 </head>
 
 <body class="is-preload">
+
+
 
     <!-- Header -->
     <header id="header">
@@ -35,9 +39,81 @@
         <section id="main" class="wrapper">
             <div class="inner">
                 <h1 class="major">年代分析</h1>
-                <span class="image fit"><img src="images/pic04.jpg" alt="" /></span>
-                <p>从年代上来看。豆瓣的电影在80年代后迅速增长，集中在近20年，其中以90年代末最突出，而IMDB的年代分布则很明显更平均。</p>
-                <p>这其实反映了两国的电影的起步和繁荣时间。中国的电影起步较晚，尤其中间由于历史、政治等原因发展坎坷，知道80年代才逐渐有港台兴盛。而北美电影市场早在上世纪20年代便以蓬勃发展，并一直处于一个市场的稳定期，因此在各个时代都有很多独特的优秀作品存在。</p>
+                <!-- Prepare the DOM element to be held by eCharts -->
+                <div id="main1" style="width: 1200px;height:600px;"></div>
+                <script type="text/javascript">
+                    // Initialse eCharts
+
+                    option = {
+                        title: {
+                            text: 'IMDB和豆瓣top250电影的年代比较',
+                            textStyle: {
+                                color: '#fff',
+                            }
+                        },
+                        tooltip: {
+                            trigger: 'axis'
+                        },
+                        legend: {
+                            data: ['最高气温', '最低气温']
+                        },
+                        toolbox: {
+                            show: true,
+                            feature: {
+                                dataZoom: {
+                                    yAxisIndex: 'none'
+                                },
+                                dataView: {
+                                    readOnly: false
+                                },
+                                magicType: {
+                                    type: ['line', 'bar']
+                                },
+                                restore: {},
+                                saveAsImage: {}
+                            }
+                        },
+                        xAxis: {
+                            axisLine: {
+                                lineStyle: {
+                                    color: '#FFE4E1',
+                                }
+                            },
+
+                            type: 'category',
+                            boundaryGap: false,
+                            data: ['1920-1925', '1925-1930', '1930-1935', '1935-1940', '1940-1945', '1945-1950', '1950-1955', '1955-1960', '1960-1965', '1965-1970', '1970-1975', '1975-1980', '1980-1985', '1985-1990', '1990-1995', '1995-2000', '2000-2005', '2005-2010', '2010-2015']
+
+                        },
+
+                        yAxis: {
+                            type: 'value',
+                            axisLine: {
+                                lineStyle: {
+                                    color: '#FFE4E1',
+                                }
+                            }
+
+                        },
+                        series: [{
+                            name: 'IMDB',
+                            type: 'line',
+                            data: [1, 5, 3, 4, 7, 5, 12, 15, 10, 9, 5, 18, 16, 14, 15, 28, 30, 22, 22, 22],
+                        }, {
+                            name: '豆瓣',
+                            type: 'line',
+                            data: [0, 0, 1, 3, 2, 1, 5, 3, 2, 2, 4, 2, 3, 16, 36, 37, 50, 51, 35],
+                        }]
+                    };
+
+
+                    // Use the option to display chart
+                    var myChart1 = echarts.init(document.getElementById('main1'));
+                    myChart1.setOption(option);
+                </script>
+                <div class="flourish-embed" data-src="visualisation/79925"></div>
+                <p>豆瓣的电影在80年代后期迅速增长，集中增长出现在近20年，其中以90年代末最为突出，而IMDB电影的年代分布明显更加平均。</p>
+                <p>这实质上反映出了两国电影的起步和繁荣时间。中国电影起步较晚，尤其在发展过程中由于历史、政治等原因遇到了重重阻碍，直到80年代港台电影才逐渐繁荣起来。而北美电影市场早在上世纪20年代便得以蓬勃发展，并一直处于市场的稳定状态，因此在各个时代都有诸多独特且优秀作品产生。</p>
             </div>
         </section>
 

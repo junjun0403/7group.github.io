@@ -12,6 +12,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <!-- Use echarts.js -->
+    <script src="echarts.min.js"></script>
+    <script src="world.js"></script>
 </head>
 
 <body class="is-preload">
@@ -35,9 +38,160 @@
         <section id="main" class="wrapper">
             <div class="inner">
                 <h1 class="major">国家分析</h1>
-                <span class="image fit"><img src="images/pic04.jpg" alt="" /></span>
-                <p>从国家上看。两个榜单都以美国的电影为主，可见北美电影对世界的影响力。而豆瓣的亚洲电影数量明显多于IMDB，这既与文化环境有关，也和两国对于外来语言电影的接受度有关。北美群众相对于中国群众明显更愿意接受自身语系的电影。</p>
-                <p>但有趣的是，印度电影在IMDB榜单中仅次于英美，像是亚洲电影的异军突起。这很大原因是由于在IMDB用户之中，印度影迷大约占据6.3%，而这一批影迷常常会为印度电影刷分，为了保持IMDB榜单的客观性和公信力，IMDB甚至官方为印度专门平行推出了另一榜单：印度电影IMDB top 250。</p>
+
+                <span class="image fit"> <!-- Prepare the DOM element to be held by eCharts -->
+                    <div id="mychart" style="width: 1200px;height:900px;"></div>
+    
+                    <script type="text/javascript">
+                        var myChart = echarts.init(document.getElementById('mychart'));
+    
+                        option = {
+                            title: {
+                                text: '豆瓣top250国家分布图',
+    
+    
+                                subtext: 'Fill in your data',
+                                left: 'center'
+                            },
+                            tooltip: {
+                                // trigger: 'item'
+                            },
+                            legend: {
+                                orient: 'vertical',
+                                left: 'left',
+                                data: ['Data on Area', 'Data on Scatter']
+                            },
+                            geo: {
+                                "zoom": 1,
+                                "center": [
+                                    50.31,
+                                    30.52
+                                ],
+                            },
+                            visualMap: {
+                                min: 1,
+                                max: 70,
+                                left: 'left',
+                                top: 'bottom',
+                                text: ['High', 'Low'],
+                                calculable: true
+                            },
+                            series: [{
+                                name: 'Data on Area',
+                                type: 'map',
+                                map: 'world',
+                                roam: false,
+                                label: {
+                                    normal: {
+                                        // Modify to "true" to show the data
+                                        show: false
+                                    },
+                                    emphasis: {
+                                        show: false
+                                    }
+                                },
+                                data: [{
+                                    name: 'China',
+                                    value: 36
+                                }, {
+                                    name: 'United States',
+                                    value: 124
+                                }, {
+                                    name: 'Japan',
+                                    value: 28
+                                }, {
+                                    name: 'England',
+                                    value: 15
+                                }, {
+                                    name: 'France',
+                                    value: 14
+                                }, {
+                                    name: 'Korea',
+                                    value: 10
+                                }, {
+                                    name: 'Italy',
+                                    value: 6
+                                }, {
+                                    name: 'Germany',
+                                    value: 4
+                                }]
+                            }]
+                        };
+                        myChart.setOption(option);
+                    </script>
+                    <!-- Prepare the DOM element to be held by eCharts -->
+    <div id="mychart1" style="width: 1200px;height:900px;"></div>
+
+    <script type="text/javascript">
+        var myChart1 = echarts.init(document.getElementById('mychart1'));
+
+        option = {
+            title: {
+                text: 'IMDBtop250电影国家分布',
+                subtext: 'Fill in your data',
+                left: 'center'
+            },
+            tooltip: {
+                // trigger: 'item'
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left',
+                data: ['Data on Area', 'Data on Scatter']
+            },
+            visualMap: {
+                min: 1,
+                max: 40,
+                left: 'left',
+                top: 'bottom',
+                text: ['High', 'Low'],
+                calculable: true
+            },
+            series: [{
+                name: 'Data on Area',
+                type: 'map',
+                map: 'world',
+                roam: false,
+                label: {
+                    normal: {
+                        // Modify to "true" to show the data
+                        show: false
+                    },
+                    emphasis: {
+                        show: false
+                    }
+                },
+                data: [{
+                    name: 'India',
+                    value: 14
+                }, {
+                    name: 'United States',
+                    value: 166
+                }, {
+                    name: 'Russia',
+                    value: 3
+                }, {
+                    name: 'England',
+                    value: 14
+                }, {
+                    name: 'France',
+                    value: 9
+                }, {
+                    name: 'Sweden',
+                    value: 3
+                }, {
+                    name: 'Italy',
+                    value: 10
+                }, {
+                    name: 'Germany',
+                    value: 6
+                }]
+            }]
+        };
+        myChart1.setOption(option);
+    </script></span>
+                <p>两个榜单都以美国的电影为主，可见北美电影对世界的影响力之大。而豆瓣的亚洲电影数量明显多于IMDB的电影数量，这既与文化环境有关，也和不同国家对于外来语言电影的接受度有关。我们不难看出，北美群众相对于中国群众更愿意接受自身语系的电影。</p>
+                <p>有趣的是，印度电影在IMDB榜单中仅次于英美，仿佛象征着亚洲电影的异军突起。这很大原因在于IMDB的用户中，印度影迷大约占据6.3%，而这一批影迷常常会为印度电影刷分，为了维持IMDB榜单的客观性和公信力，IMDB官方甚至为印度专门平行推出了另一榜单：印度电影IMDB top 250。</p>
             </div>
         </section>
 

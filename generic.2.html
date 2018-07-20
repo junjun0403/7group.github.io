@@ -40,13 +40,13 @@
             <div class="inner">
                 <h1 class="major">年代分析</h1>
                 <!-- Prepare the DOM element to be held by eCharts -->
-                <div id="main1" style="width: 1200px;height:600px;"></div>
+                <div id="main1" style="width: 100%;height:500px;"></div>
                 <script type="text/javascript">
                     // Initialse eCharts
 
                     option = {
                         title: {
-                            text: 'IMDB和豆瓣top250电影的年代比较',
+                            text: 'IMDB和豆瓣top250电影的年代分布',
                             textStyle: {
                                 color: '#fff',
                             }
@@ -55,7 +55,10 @@
                             trigger: 'axis'
                         },
                         legend: {
-                            data: ['最高气温', '最低气温']
+                            data: ['豆瓣', 'IMDB'],
+                            textStyle: {
+                                color: '#fff',
+                            },
                         },
                         toolbox: {
                             show: true,
@@ -112,8 +115,8 @@
                     myChart1.setOption(option);
                 </script>
                 <div class="flourish-embed" data-src="visualisation/79925"></div>
-                <p>豆瓣的电影在80年代后期迅速增长，集中增长出现在近20年，其中以90年代末最为突出，而IMDB电影的年代分布明显更加平均。</p>
-                <p>这实质上反映出了两国电影的起步和繁荣时间。中国电影起步较晚，尤其在发展过程中由于历史、政治等原因遇到了重重阻碍，直到80年代港台电影才逐渐繁荣起来。而北美电影市场早在上世纪20年代便得以蓬勃发展，并一直处于市场的稳定状态，因此在各个时代都有诸多独特且优秀作品产生。</p>
+                <p style="font-size: 20px;"><b>豆瓣的电影在80年代后期迅速增长，集中增长出现在近20年，其中以90年代末最为突出，而IMDB电影的年代分布明显更加平均。同时，在IMDB榜单中，经典老片，黑白电影也上榜很多，但豆瓣这一类型的很少。</b></p>
+                <p style="font-size: 20px;"><b>这实质上反映出了两国电影的起步和繁荣时间。中国电影起步较晚，尤其在发展过程中由于历史、政治等原因遇到了重重阻碍，直到80年代港台电影才逐渐繁荣起来。而北美电影市场早在上世纪20年代便得以蓬勃发展，并一直处于市场的稳定状态，因此在各个时代都有诸多独特且优秀作品产生。除此之外，也与人们的观影习惯有关，由于电影积淀较深，欧美观众对于一些年代较为久远的电影也能够有所了解和涉及，而在国内，更多人还是会选择与时代较为接近的一些电影。</b></p>
             </div>
         </section>
 

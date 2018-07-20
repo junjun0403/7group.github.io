@@ -40,17 +40,19 @@
                 <h1 class="major">国家分析</h1>
 
                 <span class="image fit"> <!-- Prepare the DOM element to be held by eCharts -->
-                    <div id="mychart" style="width: 1200px;height:900px;"></div>
+                    <div id="mychart" style="width: 100%;height:500px;"></div>
     
                     <script type="text/javascript">
                         var myChart = echarts.init(document.getElementById('mychart'));
     
                         option = {
                             title: {
+                                
                                 text: '豆瓣top250国家分布图',
-    
-    
-                                subtext: 'Fill in your data',
+                                textStyle: {
+                                color: '#FFE4E1',
+                            },
+                               
                                 left: 'center'
                             },
                             tooltip: {
@@ -59,7 +61,10 @@
                             legend: {
                                 orient: 'vertical',
                                 left: 'left',
-                                data: ['Data on Area', 'Data on Scatter']
+                                textStyle:{
+                                    color:'#FFE4E1',
+                                },
+                                data: ['区域数据',]
                             },
                             geo: {
                                 "zoom": 1,
@@ -73,11 +78,15 @@
                                 max: 70,
                                 left: 'left',
                                 top: 'bottom',
-                                text: ['High', 'Low'],
+                                text: ['高', '低'],
+                                textStyle:{
+                                    color:'#FFE4E1',
+                                },
+                left: 'left',
                                 calculable: true
                             },
                             series: [{
-                                name: 'Data on Area',
+                                name: '区域数据',
                                 type: 'map',
                                 map: 'world',
                                 roam: false,
@@ -120,7 +129,7 @@
                         myChart.setOption(option);
                     </script>
                     <!-- Prepare the DOM element to be held by eCharts -->
-    <div id="mychart1" style="width: 1200px;height:900px;"></div>
+    <div id="mychart1" style="width: 100%;height:500px;"></div>
 
     <script type="text/javascript">
         var myChart1 = echarts.init(document.getElementById('mychart1'));
@@ -128,7 +137,10 @@
         option = {
             title: {
                 text: 'IMDBtop250电影国家分布',
-                subtext: 'Fill in your data',
+                textStyle:{
+                                    color:'#FFE4E1',
+                                },
+               
                 left: 'center'
             },
             tooltip: {
@@ -136,19 +148,26 @@
             },
             legend: {
                 orient: 'vertical',
+                textStyle:{
+                                    color:'#FFE4E1',
+                                },
                 left: 'left',
-                data: ['Data on Area', 'Data on Scatter']
+                data: ['区域数据', ]
             },
             visualMap: {
                 min: 1,
                 max: 40,
                 left: 'left',
                 top: 'bottom',
-                text: ['High', 'Low'],
+                text: ['高', '低'],
+                textStyle:{
+                                    color:'#FFE4E1',
+                                },
+                left: 'left',
                 calculable: true
             },
             series: [{
-                name: 'Data on Area',
+                name: '区域数据',
                 type: 'map',
                 map: 'world',
                 roam: false,
@@ -190,8 +209,8 @@
         };
         myChart1.setOption(option);
     </script></span>
-                <p>两个榜单都以美国的电影为主，可见北美电影对世界的影响力之大。而豆瓣的亚洲电影数量明显多于IMDB的电影数量，这既与文化环境有关，也和不同国家对于外来语言电影的接受度有关。我们不难看出，北美群众相对于中国群众更愿意接受自身语系的电影。</p>
-                <p>有趣的是，印度电影在IMDB榜单中仅次于英美，仿佛象征着亚洲电影的异军突起。这很大原因在于IMDB的用户中，印度影迷大约占据6.3%，而这一批影迷常常会为印度电影刷分，为了维持IMDB榜单的客观性和公信力，IMDB官方甚至为印度专门平行推出了另一榜单：印度电影IMDB top 250。</p>
+                <p style="font-size: 20px;"><b>两个榜单都以美国的电影为主，可见北美电影对世界的影响力之大。而豆瓣的亚洲电影数量明显多于IMDB的电影数量，这既与文化环境有关，也和不同国家对于外来语言电影的接受度有关。一方面，由于亚洲部分国家对于互联网的限制，IMDB的互联网用户基本以欧美用户为主，它直接导致了亚洲电影在IMDB的备选影单中处于劣势，上榜率几乎为零。而且，IMDB对亚洲电影的选择也有些出人意料的地方，比如说，在中国并不被看好的《叶问》却在IMDB榜上，其实，这也反映了欧美观众对中国电影的另一种审美角度和思路。另一方面，欧美观众相对于中国观众更愿意接受自身语系的电影，与之形成鲜明对比的是中国观众常常对国产电影不买账。但这也与中国的电影市场有关，当市场需求过大时，中国电影票房虽然一路走高，但质量却参差不齐，难以令人信服。</b></p>
+                <p style="font-size: 20px;"><b>此外，有个有趣的现象，印度电影在IMDB榜单中仅次于英美，仿佛象征着亚洲电影的异军突起。这很大原因在于IMDB的用户中，印度影迷大约占据6.3%，而这一批影迷常常会为印度电影刷分，为了维持IMDB榜单的客观性和公信力，IMDB官方甚至为印度专门平行推出了另一榜单：印度电影IMDB top 250。</b></p>
             </div>
         </section>
 

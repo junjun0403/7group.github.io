@@ -39,7 +39,7 @@
                 <h1 class="major">时长分析</h1>
                 <span class="image fit"> <!-- Prepare the DOM element to be held by eCharts -->
                    
-                    <div id="main1" style="width: 1200px;height:900px;"></div>
+                    <div id="main1" style="width: 100%;height:500px;"></div>
                 
                     <script type="text/javascript">
                         // Initialse eCharts
@@ -88,6 +88,12 @@
                         });
                 
                         option = {
+                            title: {
+                            text: 'IMDB和豆瓣top250电影的时长分布',
+                            textStyle: {
+                                color: '#fff',
+                            }
+                        },
                             tooltip: {
                                 position: 'top'
                             },
@@ -123,6 +129,9 @@
                             visualMap: {
                                 min: 0,
                                 max: 40,
+                                textStyle:{
+                                    color:'#FFE4E1',
+                                },
                                 calculable: true,
                                 orient: 'horizontal',
                                 left: 'center',
@@ -151,8 +160,8 @@
                         var myChart1 = echarts.init(document.getElementById('main1'));
                         myChart1.setOption(option);
                     </script></span>
-                <p>从时长上看。豆瓣电影250的平均时长为122分钟，SD为30分钟，中位数为118分钟，最短45分钟，最长238分钟。 IMDB的平均时长为130分钟，SD为32分钟，中位数为126分钟，最短67分钟，最长320分钟。</p>
-                <p>这种差距并不意味着中国的观众相比西方要更没耐心，而是因为豆瓣榜单中亚洲电影更多，而亚洲电影的时长要普遍短于欧美。而这背后的原因，则与两方的电影制作周期与盈利模式有关。</p>
+                <p style="font-size: 20px;"><b>从时长上看。豆瓣电影250的平均时长为122分钟，SD为30分钟，中位数为118分钟，最短45分钟，最长238分钟。 IMDB的平均时长为130分钟，SD为32分钟，中位数为126分钟，最短67分钟，最长320分钟。</b></p>
+                <p style="font-size: 20px;"><b>这种差距并不意味着中国的观众相比西方要更没耐心，而是因为豆瓣榜单中亚洲电影更多，而亚洲电影的时长要普遍短于欧美。而这背后的原因，则与两方的电影制作周期与盈利模式有关。</b></p>
             </div>
         </section>
 

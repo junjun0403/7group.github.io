@@ -12,6 +12,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <!-- Use echarts.js -->
+    <script src="echarts.min.js"></script>
 </head>
 
 <body class="is-preload">
@@ -35,10 +37,256 @@
         <section id="main" class="wrapper">
             <div class="inner">
                 <h1 class="major">导演分析</h1>
-                <span class="image fit"><img src="images/pic04.jpg" alt="" /></span>
-                <p>从导演上看。宫崎骏、斯皮尔伯格以及昆汀是中美两国都喜欢的导演。但中国观众更偏爱的王家卫、李安，欧美观众偏爱的希区柯克以及斯坦利·库布里克则都几乎未在对方的榜单里上榜。</p>
-                <p>被两个榜单兼爱的导演则反映出他们的风格更具有普适性，更能被国际化舞台所接受。而只在某一榜单盛行的导演可看出他们的风格与自身所处的文化语境更贴合，具有强烈的本土特性，这也是很多作品只能“墙内开花”的原因。
-                </p>
+                <span class="image fit">  <!-- Prepare the DOM element to be held by eCharts -->
+
+                    <div id="main1" style="width: 100%;height:400%;"></div>
+                
+                    <script type="text/javascript">
+                        // Initialse eCharts
+                     
+                var weatherIcons = {
+                    '宫崎骏': './data/asset/img/weather/sunny_128.png',
+                    '诺兰': './data/asset/img/weather/cloudy_128.png',
+                    'Showers': './data/asset/img/weather/showers_128.png'
+                };
+                
+                var seriesLabel = {
+                    normal: {
+                        show: true,
+                        textBorderColor: '#333',
+                        textBorderWidth: 2
+                    }
+                }
+                
+                option = {
+                    title: {
+                        text: '豆瓣中作品数量最多的前七位导演',
+                        textStyle:{
+            color:'#FFE4E1',
+        },
+                    },
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: {
+                            type: 'shadow'
+                        }
+                    },
+                    legend: {
+                        data: ['豆瓣', 'IMDB',],
+                         textStyle: {
+                                                color: '#FFE4E1',
+                                            },
+                    },
+                    grid: {
+                        left: 100
+                    },
+                    toolbox: {
+                        show: true,
+                        feature: {
+                            saveAsImage: {}
+                        }
+                    },
+                    xAxis: {
+                        type: 'value',
+                        min:0,
+                        max:10,
+                        name: 'Days',
+                        axisLine: {
+                                                lineStyle: {
+                                                    color: '#FFE4E1',
+                                                }
+                                            },
+                        axisLabel: {
+                            formatter: '{value}'
+                        }
+                    },
+                    yAxis: {
+                        type: 'category',
+                        axisLine: {
+                                                lineStyle: {
+                                                    color: '#FFE4E1',
+                                                }
+                                            },
+                        inverse: true,
+                        data: ['宫崎骏', '诺兰', '斯皮尔伯格','王家卫','李安','昆汀','大卫芬奇'],
+                        axisLabel: {
+                      
+                            margin: 20,
+                            rich: {
+                                value: {
+                                    lineHeight: 30,
+                                    align: 'center'
+                                },
+                                Sunny: {
+                                    height: 40,
+                                    align: 'center',
+                                    backgroundColor: {
+                                        image: weatherIcons.Sunny
+                                    }
+                                },
+                                Cloudy: {
+                                    height: 40,
+                                    align: 'center',
+                                    backgroundColor: {
+                                        image: weatherIcons.Cloudy
+                                    }
+                                },
+                                Showers: {
+                                    height: 40,
+                                    align: 'center',
+                                    backgroundColor: {
+                                        image: weatherIcons.Showers
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    series: [
+                        {
+                            name: '豆瓣',
+                            type: 'bar',
+                            data: [7, 7, 6,5,4,4,4],
+                            label: seriesLabel,
+        
+                        },
+                        {
+                            name: 'IMDB',
+                            type: 'bar',
+                            label: seriesLabel,
+                            data: [5,3,5,1,0,5,3]
+                        },
+                    ]
+                };
+                
+                        // Use the option to display chart
+                        var myChart1 = echarts.init(document.getElementById('main1'));
+                        myChart1.setOption(option);
+                    </script>
+                      <!-- Prepare the DOM element to be held by eCharts -->
+   
+    <div id="main2" style="width: 100%;height:500px;"></div>
+
+    <script type="text/javascript">
+        // Initialse eCharts
+     
+
+
+
+var seriesLabel = {
+    normal: {
+        show: true,
+        textBorderColor: '#333',
+        textBorderWidth: 2
+    }
+}
+
+option = {
+    title: {
+        text: 'IMDB中作品数量最多的前七位导演',
+        textStyle:{
+            color:'#FFE4E1',
+        },
+    },
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'shadow'
+        }
+    },
+    legend: {
+        data: ['豆瓣', 'IMDB',],
+         textStyle: {
+                                color: '#FFE4E1',
+                            },
+    },
+    grid: {
+        left: 100
+    },
+    toolbox: {
+        show: true,
+        feature: {
+            saveAsImage: {}
+        }
+    },
+    xAxis: {
+        type: 'value',
+        min:0,
+        max:10,
+        name: 'Days',
+        axisLine: {
+                                lineStyle: {
+                                    color: '#FFE4E1',
+                                }
+                            },
+        axisLabel: {
+            formatter: '{value}'
+        }
+    },
+    yAxis: {
+        type: 'category',
+        axisLine: {
+                                lineStyle: {
+                                    color: '#FFE4E1',
+                                }
+                            },
+        inverse: true,
+        data: ['希区·柯克', '斯坦利·库布里克', '比利·威尔德','宫崎骏','斯皮尔伯格','昆汀','大卫·里恩'],
+        axisLabel: {
+          
+            margin: 20,
+            rich: {
+                value: {
+                    lineHeight: 30,
+                    align: 'center'
+                },
+                Sunny: {
+                    height: 40,
+                    align: 'center',
+                    backgroundColor: {
+                        image: weatherIcons.Sunny
+                    }
+                },
+                Cloudy: {
+                    height: 40,
+                    align: 'center',
+                    backgroundColor: {
+                        image: weatherIcons.Cloudy
+                    }
+                },
+                Showers: {
+                    height: 40,
+                    align: 'center',
+                    backgroundColor: {
+                        image: weatherIcons.Showers
+                    }
+                }
+            }
+        }
+    },
+    series: [
+        {
+            name: '豆瓣',
+            type: 'bar',
+            data: [1, 1, 0,7,6,3,0],
+            label: seriesLabel,
+          
+        },
+        {
+            name: 'IMDB',
+            type: 'bar',
+            label: seriesLabel,
+            data: [11,9,6,5,5,5,4]
+        },
+    ]
+};
+
+        // Use the option to display chart
+        var myChart1 = echarts.init(document.getElementById('main2'));
+        myChart1.setOption(option);
+    </script></span>
+                <p style="font-size: 20px;"><b>从导演上看，宫崎骏、斯皮尔伯格以及昆汀是中美两国都很受欢迎的导演。但中国观众更偏爱的王家卫、李安，欧美观众偏爱的希区柯克以及斯坦利·库布里克则都鲜在对方的榜单里上榜。这说明被两个榜单兼爱的导演的风格更具有普适性，更加能被国际化舞台所接受。而只在某一榜单盛行的导演可以看出他们的风格与自身所处的文化语境更贴合，具有强烈的本土特性，这也是很多作品只能“墙内开花”的原因。其实像李安，王家卫，希区柯克等都是国际影坛公认的电影大师，但由于传播的局限性以及观众的观影习惯，文化积淀，审美角度等问题，他们的电影却难以上榜。</b></p>
+                <p style="font-size: 20px;"><b> 同时我们也可以比较清楚的看到，独属于IMDB榜单中的导演比豆瓣更多，说明IMDB的用户有更多愿意观看有自己文化特征的导演，而豆瓣的用户则相对更倾向于观看一些在国际上已经享有声誉的导演。
+                </b></p>
             </div>
         </section>
 

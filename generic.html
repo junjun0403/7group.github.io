@@ -12,6 +12,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <!-- Use echarts.js -->
+    <script src="echarts.min.js"></script>
 </head>
 
 <body class="is-preload">
@@ -35,9 +37,83 @@
         <section id="main" class="wrapper">
             <div class="inner">
                 <h1 class="major">评分分析</h1>
-                <span class="image fit"><img src="images/pic07.jpg" alt="肖申克的救赎" /></span>
-                <p>从评分上来看，豆瓣top250的平均评分为8.75，中位数为8.7，最低分为8.2，最高分为9.6。而IMDB250电影的平均评分为8.26分，SD为0.23分，中位数8.2，最低8，最高9.2。</p>
-                <p>我们可以看出豆瓣的评分明显要高于IMDB的评分，这背后反应的其实是二者评分体系的不同。豆瓣所采取的是打分制，同时以一种基本的加权平均，简单将5星评分系统转换成10分制的评分结果，也必定造成一定的误差。而IMDB则是直接划分为1-10分十个档，用户的评分选择更细化，也因而能得出更精确的数据。同时，IMDB以一种特殊的防作弊系统，只允许常用用户评分，也可以避免豆瓣常出现的水军刷分现象。</p>
+                <!-- Prepare the DOM element to be held by eCharts -->
+                <div id="main1" style="width: 100%;height:500%;"></div>
+                <script type="text/javascript">
+                    // Initialse eCharts
+
+
+
+                    option = {
+                        title: {
+                            text: '豆瓣和IMDBtop250的评分分布',
+                            textStyle: {
+                                color: '#FFE4E1',
+                            }
+                        },
+                        tooltip: {
+                            trigger: 'axis',
+                            axisPointer: {
+                                type: 'shadow'
+                            }
+                        },
+                        legend: {
+                            data: ['豆瓣', 'IMDB'],
+                            textStyle: {
+                                color: '#FFE4E1',
+                            },
+                        },
+                        grid: {
+                            left: '3%',
+                            right: '4%',
+                            bottom: '3%',
+                            containLabel: true
+                        },
+                        xAxis: {
+                            type: 'value',
+                            boundaryGap: [0, 0.0000000000001],
+                            min: 0,
+                            max: 150,
+                            axisLine: {
+                                lineStyle: {
+                                    color: '#FFE4E1',
+                                }
+                            },
+                        },
+                        yAxis: {
+                            axisLine: {
+                                lineStyle: {
+                                    color: '#FFE4E1',
+                                }
+                            },
+                            type: 'category',
+                            data: ['8-8.2', '8.2-8.4', '8.4-8.6', '8.6-8.8', '8.8-9.0', '9.0-9.2', '9.2-9.4', '9.4-9.6', ]
+
+
+                        },
+                        series: [{
+                            name: '豆瓣',
+                            type: 'bar',
+                            data: [5, 14, 47, 85, 51, 37, 10, 7],
+                            itemStyle: {
+                                color: '#90EE90',
+                            },
+                        }, {
+                            name: 'IMDB',
+                            type: 'bar',
+                            data: [103, 78, 43, 15, 8, 5, 4, 1, ],
+                            itemStyle: {
+                                color: '#00FFFF',
+                            }
+                        }]
+                    };
+
+                    // Use the option to display chart
+                    var myChart1 = echarts.init(document.getElementById('main1'));
+                    myChart1.setOption(option);
+                </script>
+                <p style="font-size: 20px;"><b>豆瓣top250的平均评分为8.75，中位数为8.7，最低分为8.2，最高分为9.6。而IMDB250电影的平均评分为8.26，SD（标准差）为0.23，中位数8.2，最低8，最高9.2。</b></p>
+                <p style="font-size: 20px;"><b>我们可以看出豆瓣的评分明显要高于IMDB的评分，这背后反应的其实是二者评分体系之间的差异。豆瓣所采取的是打分制，同时以一种基本的加权平均，简单地将5星评分系统转换成10分制的评分结果，也必定会造成一定的误差；而IMDB则是直接划分为1-10分十个档，用户的评分选择更细化，也因而能得出更精确的数据。并且，IMDB有一种特殊的防作弊系统，只允许常用用户评分，也有效避免了豆瓣上常出现的水军刷分现象。</b></p>
             </div>
         </section>
 
